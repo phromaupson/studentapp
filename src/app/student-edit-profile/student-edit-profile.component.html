@@ -18,16 +18,23 @@
             <div class="mb-3">
               <label for="txtName" class="form-label">Name</label>
               <input
+                #nameInput
                 type="text"
                 class="form-control"
+                [value]="user.name"
+                (change)="name = nameInput.value"
                 placeholder="Enter your name"
+                disabled
               />
             </div>
             <div class="mb-3">
               <label for="txtJob" class="form-label">Room</label>
               <input
+                #roomInput
                 type="text"
                 class="form-control"
+                [value]="user.room"
+                (change)="room = roomInput.value"
                 placeholder="Enter your room"
               />
             </div>
@@ -35,8 +42,11 @@
               <label for="txtMobile" class="form-label">Mobile</label>
               <div class="input-group">
                 <input
+                  #mobileInput
                   type="text"
                   class="form-control"
+                  [value]="user.mobile"
+                  (change)="mobile = mobileInput.value"
                   placeholder="Enter your mobile number"
                 />
               </div>
@@ -45,15 +55,24 @@
             <div class="mb-3">
               <label for="txtDescription" class="form-label">Description</label>
               <textarea
+                #descInput
                 rows="4"
                 cols="50"
                 class="form-control"
+                [value]="user.description"
+                (change)="description = descInput.value"
                 placeholder="Enter your Description"
               ></textarea>
             </div>
 
             <div class="text-center">
-              <button type="button" class="btn btn-primary ml-3">Save</button>
+              <button
+                type="button"
+                (click)="UpdateUser()"
+                class="btn btn-primary ml-3"
+              >
+                Save
+              </button>
             </div>
           </form>
         </div>

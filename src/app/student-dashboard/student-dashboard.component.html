@@ -35,7 +35,7 @@
                     {{ user.description.substring(0, 15) }}...
                 </td>
                 <td>
-                    <input type="button" value="Edit" class="btn btn-success me-2" />
+                    <input type="button" [routerLink]="['/student/edit', user.name]" value="Edit" class="btn btn-success me-2" />
                     <input type="button" (click)="DeleteStudent(user.name)" value="Delete" class="btn btn-danger" />
                 </td>
             </tr>
