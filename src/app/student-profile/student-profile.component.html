@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+            <a routerLink="/" routerLinkActive="active" class="navbar-brand" href="#">Student Dashboard</a
+      >
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card mt-1 mb-4">
+        <img
+          class="card-img-top"
+          alt=""
+          src="https://picsum.photos/1920/1080"
+          width="300"
+          height="500"
+        />
+        <div class="card-body">
+          <h3 class="card-title">{{ user.name }}</h3>
+          <h4>{{ user.room }}</h4>
+          <h5>{{ user.mobile }}</h5>
+          <p class="card-text">{{ user.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

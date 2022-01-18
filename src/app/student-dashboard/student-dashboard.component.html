@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Student Dashboard</a>
@@ -19,30 +19,24 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Class</th>
-                <th>Email</th>
-                <th></th>
+                <th>Room</th>
+                <th>Mobile</th>
+                <th>Description</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Phromaupson</td>
-                <td>English</td>
-                <td>kamkonphrom@gmail.com</td>
+            <tr *ngFor="let user of users; let i = index" style="cursor: pointer">
+                <td [routerLink]="['/student', user.name]">{{ i + 1 }}</td>
+                <td [routerLink]="['/student', user.name]">{{ user.name }}</td>
+                <td [routerLink]="['/student', user.name]">{{ user.room }}</td>
+                <td [routerLink]="['/student', user.name]">{{ user.mobile }}</td>
+                <td [routerLink]="['/student', user.name]">
+                    {{ user.description.substring(0, 15) }}...
+                </td>
                 <td>
                     <input type="button" value="Edit" class="btn btn-success me-2" />
-                    <input type="button" value="Delete" class="btn btn-danger" />
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Komsak</td>
-                <td>English</td>
-                <td>lert_zodiac@gmail.com</td>
-                <td>
-                    <input type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" value="Edit" class="btn btn-success me-2" />
-                    <input type="button" value="Delete" class="btn btn-danger" />
+                    <input type="button" (click)="DeleteStudent(user.name)" value="Delete" class="btn btn-danger" />
                 </td>
             </tr>
         </tbody>
@@ -66,27 +60,24 @@
                         <input type="text" formControlName="name" class="form-control" id="txtName" placeholder="Enter your name" />
                     </div>
                     <div class="mb-3">
-                        <label for="txtClass" class="form-label">Class</label>
-                        <input type="text" formControlName="class" class="form-control" id="txtClass" placeholder="Enter your class" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="txtEmail" class="form-label">Email id</label>
-                        <input type="email" formControlName="email" class="form-control" id="txtEmail" placeholder="Enter your email id" />
+                        <label for="txtRoom" class="form-label">Room</label>
+                        <input type="text" formControlName="room" class="form-control" id="txtRoom" placeholder="Enter your room" />
                     </div>
                     <div class="mb-3">
                         <label for="txtMobile" class="form-label">Mobile</label>
-                        <div class="input-group">
-                            <div class="input-group-text">+66</div>
-                            <input type="text" formControlName="mobile" class="form-control" id="txtMobile" placeholder="Enter your mobile number" />
-                        </div>
+                        <input type="text" formControlName="mobile" class="form-control" id="txtMobile" placeholder="Enter your mobile number" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtDescription" class="form-label">Description</label>
+                        <textarea rows="4" cols="50" formControlName="description" class="form-control" placeholder="Enter your Description"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
           Close
         </button>
-                <button type="button" class="btn btn-primary" (click)="AddStudent()">
+                <button type="button" (click)="AddStudent()" class="btn btn-primary" data-bs-dismiss="modal">
           Save
         </button>
             </div>
