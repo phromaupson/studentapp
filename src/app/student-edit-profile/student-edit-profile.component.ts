@@ -27,12 +27,10 @@ export class StudentEditProfileComponent implements OnInit {
   ngOnInit(): void {
     this.oldName = this.activatedRoute.snapshot.params['name'];
     this.getOneUser();
-
-    this.name = this.user.name;
   }
 
-  getOneUser = async () => {
-    await this.http
+  getOneUser() {
+    this.http
       .get(`http://localhost:9000/api/${this.oldName}`)
       .subscribe((result: any) => {
         this.name = result.name;
@@ -41,11 +39,9 @@ export class StudentEditProfileComponent implements OnInit {
         this.description = result.description;
         this.user = result;
       });
-  };
+  }
 
   UpdateUser() {
-    console.log(this.name, this.mobile, this.room, this.description);
-
     this.http
       .put(`http://localhost:9000/api/update/${this.oldName}`, {
         room: this.room,
@@ -56,16 +52,5 @@ export class StudentEditProfileComponent implements OnInit {
         this.toast.success(`${this.oldName} Updated`, 'Success');
         this.router.navigateByUrl('/');
       });
-
-    // this.http
-    //   .put(`http://localhost:9000/api/update/${this.oldName}`, {
-    //     room: this.room,
-    //     mobile: this.mobile,
-    //     description: this.description,
-    //   })
-    //   .subscribe((msg: any) => {
-    //     this.toast.success(`${this.oldName} Updated`, 'Success');
-    //     this.router.navigateByUrl('/');
-    //   });
   }
 }

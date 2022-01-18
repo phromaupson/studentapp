@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { StudentModel } from './student.model';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -11,8 +10,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class StudentDashboardComponent implements OnInit {
   studentValue!: FormGroup;
-
-  studentObj: StudentModel = new StudentModel();
 
   constructor(
     private formBuilder: FormBuilder,
